@@ -29,7 +29,7 @@ def parse_header(header: list[str]) -> dict[str, str]:
     for line in header:
         split = line.split(":", 1) # consider using regex
         if len(split) > 1:
-            header_dict[split[0]] = split[1]
+            header_dict[split[0].strip()] = split[1].strip()
     return header_dict
 
 def parse_choice(choice: str) -> dict[str, str|None]:
