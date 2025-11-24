@@ -16,7 +16,8 @@ def parse_file(file: typing.TextIO) -> tuple[dict, list]:
             current_room = []
             has_content = False
         else:
-            current_room.append(line)
+            if has_content or stripped_line:
+                current_room.append(line)
             if not has_content and stripped_line:
                 has_content = True
     if has_content:
