@@ -36,8 +36,8 @@ def parse_choice(choice: str) -> dict[str, str|None]:
     # If the latter, text is the title of the room
     # Except that requires later knowledge hmmm.
     # So maybe we should make a later pass
-    text_pattern = r"\[([\w ()[\]-]*)\](\(#([\w-]*)\))"
-    id_pattern = r"(\(#([\w-]*)\))"
+    text_pattern = r"\[([\w ()[\]-]*)\]\(#([\w-]*)\)"
+    id_pattern = r"\(#([\w-]*)\)"
     choice = choice.strip()
     id_match = re.match(id_pattern, choice)
     choice_dict: dict[str, str | None] = {
