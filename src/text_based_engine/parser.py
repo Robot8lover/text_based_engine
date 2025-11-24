@@ -16,7 +16,8 @@ def parse_file(file: typing.TextIO) -> tuple[dict, list]:
             current_room = []
             has_content = False
         else:
-            current_room.append(line)
+            if has_content or stripped_line:
+                current_room.append(line)
             if not has_content and stripped_line:
                 has_content = True
     if has_content:
@@ -28,7 +29,7 @@ def parse_header(header: list[str]) -> dict[str, str]:
     for line in header:
         split = line.split(":", 1) # consider using regex
         if len(split) > 1:
-            header_dict[split[0]] = split[1]
+            header_dict[split[0].strip()] = split[1].strip()
     return header_dict
 
 def parse_choice(choice: str) -> dict[str, str|None]:
@@ -36,8 +37,8 @@ def parse_choice(choice: str) -> dict[str, str|None]:
     # If the latter, text is the title of the room
     # Except that requires later knowledge hmmm.
     # So maybe we should make a later pass
-    text_pattern = r"\[([\w ()[\]-]*)\](\(#([\w-]*)\))"
-    id_pattern = r"(\(#([\w-]*)\))"
+    text_pattern = r"\[([\w ()[\]-]*)\]\(#([\w-]*)\)"
+    id_pattern = r"\(#([\w-]*)\)"
     choice = choice.strip()
     id_match = re.match(id_pattern, choice)
     choice_dict: dict[str, str | None] = {
