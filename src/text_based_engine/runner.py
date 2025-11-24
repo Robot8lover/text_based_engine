@@ -12,7 +12,7 @@ def loop(rooms, start_id):
         choices = current_room["choices"]
         print(current_room["title"])
         print()
-        print(room_body["text"])
+        print(room_body)
         print()
         print(choices_to_str(choices))
         next_index = get_choice_input(len(choices)) - 1
