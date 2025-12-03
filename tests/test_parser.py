@@ -34,3 +34,21 @@ def test_fill_titles():
     assert room_dict["foo"]["choices"][0]["id"] == "bar-room"
     assert room_dict["bar-room"]["choices"][0]["text"] == foo_choice_text
     assert room_dict["bar-room"]["choices"][0]["id"] == "foo"
+
+def test_parse_room_lists():
+    pass
+
+def test_parse_room_body_list():
+    pass
+
+def test_parse_choices_list():
+    pass
+
+def test_parse_choice():
+    pass
+
+def test_parse_header():
+    pass
+
+def test_parse_file():
+    pass
