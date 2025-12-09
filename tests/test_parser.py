@@ -7,6 +7,7 @@ from text_based_engine.parser import (
     parse_room_lists,
     fill_titles,
 )
+from typing import cast
 
 def test_fill_titles():
     bar_title = "The _Bar -Room"
@@ -48,7 +49,10 @@ def test_parse_choice():
     pass
 
 def test_parse_header():
-    pass
+    header = cast(list[str], "start: foo-id\nfoo: bar".splitlines())
+    header_dict = parse_header(header)
+    assert header_dict == {"start": "foo-id", "foo": "bar",}
+
 
 def test_parse_file():
     pass
